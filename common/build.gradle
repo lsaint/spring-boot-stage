@@ -1,0 +1,12 @@
+
+description = 'common'
+
+version = '0.0.1'
+sourceCompatibility = 10
+
+bootJar { enabled = false }
+jar { enabled = true }
+
+dependencies {
+    compile('org.apache.commons:commons-lang3:3.8')
+}

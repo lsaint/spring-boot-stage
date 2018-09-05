@@ -1,0 +1,17 @@
+description = 'app'
+
+
+version = '0.0.3'
+sourceCompatibility = 10
+
+dependencies {
+
+    // mysql
+    compile("org.springframework.boot:spring-boot-starter-data-jpa")
+    compile("mysql:mysql-connector-java")
+    compile("javax.xml.bind:jaxb-api:2.3.0")
+
+    compile('joda-time:joda-time:2.2')
+
+    compile project(':common')
+}

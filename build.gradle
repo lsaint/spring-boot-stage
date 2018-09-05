@@ -1,0 +1,39 @@
+buildscript {
+	ext {
+		springBootVersion = '2.0.4.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'org.springframework.boot'
+
+    group = 'com.ethan'
+
+    repositories {
+        mavenCentral()
+    }
+
+    configurations {
+        compile.exclude module: 'spring-boot-starter-logging'
+    }
+
+    dependencies {
+        compile('org.springframework.boot:spring-boot-starter-web')
+        // 使用性能更出色的log4j2
+        compile('org.springframework.boot:spring-boot-starter-log4j2')
+        testCompile('org.springframework.boot:spring-boot-starter-test')
+        compile('org.projectlombok:lombok:1.18.2')
+    }
+}
+
+bootJar { enabled = false }
+jar { enabled = false }
