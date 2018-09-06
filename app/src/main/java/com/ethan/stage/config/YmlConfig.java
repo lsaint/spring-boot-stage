@@ -1,4 +1,4 @@
-package com.ethan.stage;
+package com.ethan.stage.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;

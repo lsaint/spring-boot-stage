@@ -7,4 +7,7 @@ public interface EthanService {
 
     // 分页查询示例
     public Page<Version> getPageQueryVersion();
+
+    // rest get 调用示例
+    public String getUrl();
 }

@@ -4,7 +4,6 @@ import com.ethan.stage.common.APIException;
 import com.ethan.stage.service.VersionService;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import lombok.Data;
@@ -20,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class VersionController {
 
     @Autowired VersionService versionService;
-    @Autowired HttpServletRequest request;
 
     @RequestMapping(value = "/v1/version/last/", method = RequestMethod.GET)
     public String queryLastVersion() {

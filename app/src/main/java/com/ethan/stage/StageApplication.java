@@ -1,6 +1,7 @@
 package com.ethan.stage;
 
 import com.ethan.stage.common.algorithm.SnowFlake;
+import com.ethan.stage.config.YmlConfig;
 import com.ethan.stage.dal.UserRepository;
 import com.ethan.stage.dal.Version;
 import com.ethan.stage.service.EthanService;
@@ -33,5 +34,7 @@ public class StageApplication implements CommandLineRunner {
         for (Version version : ethanService.getPageQueryVersion()) {
             System.out.println("分页查询 " + version);
         }
+
+        System.out.println("调用第三方url: " + ethanService.getUrl());
     }
 }
