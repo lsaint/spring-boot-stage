@@ -1,0 +1,27 @@
+server:
+    port: 8123
+
+spring:
+    datasource:
+        url : jdbc:mysql://localhost:3306/bjdj?useSSL=false
+        username : root
+        password : password
+        driverClassName : com.mysql.jdbc.Driver
+
+    # 以下两项为404抛出NoHandlerFoundException异常方便统一处理
+    resources:
+        add-mappings: false
+    mvc:
+        throw-exception-if-no-handler-found: true
+        
+    # 终端彩色log
+    output:
+        ansi:
+            enabled: always
+
+logging:
+    level:
+        com.ethan.stage: debug
+        org.springframework.web.filter.CommonsRequestLoggingFilter: debug
+
+strConfig: ikkyo
