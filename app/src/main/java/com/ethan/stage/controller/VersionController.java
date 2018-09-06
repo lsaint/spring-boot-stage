@@ -1,5 +1,6 @@
 package com.ethan.stage.controller;
 
+import com.ethan.stage.common.APIException;
 import com.ethan.stage.service.VersionService;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
@@ -23,7 +24,9 @@ public class VersionController {
 
     @RequestMapping(value = "/v1/version/last/", method = RequestMethod.GET)
     public String queryLastVersion() {
-        var a = 1 / 0;
+        if (true) {
+            throw new APIException("test");
+        }
         return versionService.getLastVersion().toString();
     }
 

@@ -44,4 +44,11 @@ public class GlobalExceptionHandler {
         result.put("errors", errors);
         return new GenericResponse<>(ErrEnum.BAD_REQUEST, result);
     }
+
+    @ExceptionHandler(value = APIException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public GenericResponse apiExceptionHandler(APIException ex) {
+        log.debug(ex);
+        return new GenericResponse<>(ex.getCode(), ex.getMsg(), Const.EMPTY_MAP);
+    }
 }
