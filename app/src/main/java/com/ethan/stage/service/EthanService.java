@@ -1,27 +1,64 @@
 package com.ethan.stage.service;
 
-public interface EthanService {
+import com.ethan.stage.common.algorithm.SnowFlake;
+import com.ethan.stage.config.AppConfig;
+import com.ethan.stage.dal.UserRepository;
+import com.ethan.stage.dal.Version;
+import com.ethan.stage.dal.VersionRepository;
+import com.ethan.stage.service.BO.PostReq;
+import com.ethan.stage.service.BO.Quote;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
+import org.springframework.http.HttpEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
-    void invokeCommon();
+@Service
+public class EthanService {
 
-    void readConfig();
+    @Autowired private AppConfig config;
+    @Autowired private UserRepository userRepository;
+    @Autowired private VersionRepository versionRepository;
+    @Autowired private RestTemplate restTemplate;
 
-    void queryMySql();
+    public void invokeCommon() {
+        SnowFlake snowFlake = new SnowFlake(1, 2);
+        System.out.println("调用common项目snowFlake " + snowFlake.nextId());
+    }
 
-    // 分页查询示例
-    void getPageQueryVersion();
+    public void readConfig() {
+        System.out.println("从配置文件读取信息 " + config.getStrConfig());
+    }
 
-    // rest get 调用示例
-    String getUrl();
+    public void queryMySql() {
+        System.out.println("mysql简单查询 " + userRepository.count());
+    }
 
-    /*   rest post 调用示例
-     *   curl -X POST https://jsonplaceholder.typicode.com/posts -d '{"title": "t", "body": "b", "userId": 1}' -H "Content-Type: application/json"
-     *   {
-     *     "title": "t",
-     *     "body": "b",
-     *     "userId": 1,
-     *     "id": 101
-     *   }
-     */
-    String postUrl();
+    public void getPageQueryVersion() {
+        // PageRequest.of(int page, int size, Sort.Direction direction, String... properties)
+        Pageable pageable = PageRequest.of(0, 1, Sort.by(Direction.DESC, "id"));
+        for (Version version : versionRepository.findAll(pageable)) {
+            System.out.println("分页查询 " + version);
+        }
+    }
+
+    public String getUrl() {
+        Quote quote =
+                restTemplate.getForObject(
+                        "http://gturnquist-quoters.cfapps.io/api/random", Quote.class);
+        System.out.println("get第三方url: " + quote.toString());
+        return quote.toString();
+    }
+
+    public String postUrl() {
+        HttpEntity<PostReq> request = new HttpEntity<>(new PostReq("ti", "bo", 1));
+        PostReq postReply =
+                restTemplate.postForObject(
+                        "https://jsonplaceholder.typicode.com/posts", request, PostReq.class);
+        System.out.println("post第三方url: " + postReply.toString());
+        return postReply.toString();
+    }
 }

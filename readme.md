@@ -27,3 +27,8 @@
 * dal层: 使用catch(Exception e)方式，并throw new DAOException(e)，不需要打印日志.
 * service层: 必须记录出错日志到，尽可能带上参数信息保护案发现场.
 * controller层: 不再抛异常，要将异常处理成错误码和错误信息方式返回.
+
+
+## service 要不要使用定义接口？
+
+* 先不用，等到某个时候某个功能需要的时候再重构。
