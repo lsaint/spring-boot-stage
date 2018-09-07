@@ -10,7 +10,7 @@ public class RestTemplateConfig {
 
     @Bean
     public RestTemplate restTemplate(RestTemplateBuilder builder) {
-        // builder.basicAuthorization("user", "password").build()
-        return builder.build();
+        int timeout = 5000;
+        return builder.setConnectTimeout(timeout).setReadTimeout(timeout).build();
     }
 }

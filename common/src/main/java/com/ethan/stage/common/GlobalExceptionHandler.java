@@ -2,7 +2,7 @@ package com.ethan.stage.common;
 
 import com.ethan.stage.common.enums.ErrEnum;
 import java.util.*;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -11,10 +11,11 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
-@Log4j2
+// 应用中不可直接使用日志系统(Log4j、Logback)中的 API，而应依赖使用日志框架
+// SLF4J 中的 API，使用门面模式的日志框架，有利于维护和各个类的日志处理方式统一
+@Slf4j
 @SuppressWarnings("rawtypes")
-// 该注解实现全局异常处理
-@RestControllerAdvice
+@RestControllerAdvice // 该注解实现全局异常处理
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(value = {Exception.class})
@@ -48,7 +49,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = APIException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public GenericResponse apiExceptionHandler(APIException ex) {
-        log.debug(ex);
+        log.debug(ex.toString());
         return new GenericResponse<>(ex.getCode(), ex.getMsg(), Const.EMPTY_MAP);
     }
 }
