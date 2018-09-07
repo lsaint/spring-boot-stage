@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableConfigurationProperties // tells Spring to treat this class as a consumer of application.yml
 @ConfigurationProperties // Annotation for externalized configuration
-public class YmlConfig {
+public class AppConfig {
 
     private String strConfig;
 
