@@ -1,15 +1,18 @@
 package com.ethan.stage.service;
 
-import com.ethan.stage.dal.Version;
-import org.springframework.data.domain.Page;
-
 public interface EthanService {
 
+    void invokeCommon();
+
+    void readConfig();
+
+    void queryMySql();
+
     // 分页查询示例
-    public Page<Version> getPageQueryVersion();
+    void getPageQueryVersion();
 
     // rest get 调用示例
-    public String getUrl();
+    String getUrl();
 
     /*   rest post 调用示例
      *   curl -X POST https://jsonplaceholder.typicode.com/posts -d '{"title": "t", "body": "b", "userId": 1}' -H "Content-Type: application/json"
@@ -20,5 +23,5 @@ public interface EthanService {
      *     "id": 101
      *   }
      */
-    public String postUrl();
+    String postUrl();
 }
