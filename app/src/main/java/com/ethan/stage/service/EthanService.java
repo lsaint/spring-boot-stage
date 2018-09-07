@@ -7,6 +7,7 @@ import com.ethan.stage.dal.Version;
 import com.ethan.stage.dal.VersionRepository;
 import com.ethan.stage.service.BO.PostReq;
 import com.ethan.stage.service.BO.Quote;
+import java.text.MessageFormat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -30,7 +31,8 @@ public class EthanService {
     }
 
     public void readConfig() {
-        System.out.println("从配置文件读取信息 " + config.getStrConfig());
+        System.out.println(
+                MessageFormat.format("从配置文件读取信息 {0} {1}", config.getStrConfig(), config.getA()));
     }
 
     public void queryMySql() {

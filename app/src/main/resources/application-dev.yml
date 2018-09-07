@@ -24,4 +24,8 @@ logging:
         com.ethan.stage: debug
         org.springframework.web.filter.CommonsRequestLoggingFilter: debug
 
-strConfig: ikkyo
+app:
+    a: 5
+    strConfig: ikkyo
+    timeout: 5000
+
