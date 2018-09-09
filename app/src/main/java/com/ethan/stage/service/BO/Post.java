@@ -6,7 +6,7 @@ import lombok.Data;
 // request和reply的对象相同
 @Data
 @AllArgsConstructor
-public class PostReq {
+public class Post {
     private String title;
     private String body;
     private int userId;

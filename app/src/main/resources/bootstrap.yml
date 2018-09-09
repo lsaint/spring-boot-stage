@@ -1,0 +1,16 @@
+# bootstrap.yml 早于 application.yml 加载
+# 当allow-override为true时
+# application.yml中相同的配置项将被覆盖
+
+spring:
+    application:
+        name: stage-app
+
+    cloud:
+        config:
+            name: app               # coningsrv中config-repo的配置文件名
+            profile: test           # configsrv中config-repo的文件夹名
+            allow-override: true
+            uri: http://localhost:8888
+            #fail-fast: true        # 连接不上直接启动失败
+

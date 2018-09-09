@@ -6,7 +6,7 @@ spring:
         name: configsrv
 
     profiles:
-        active: native, dev
+        active: native
 
     cloud:
         config:

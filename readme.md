@@ -1,5 +1,6 @@
 ## 项目准则
 * NO XML
+* yml instead properties
 
 ## 分层规范
 
