@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.filter.CommonsRequestLoggingFilter;
 
+// 为每个URL请求打印Log
 @Configuration
 public class RequestLoggingFilterConfig {
 
