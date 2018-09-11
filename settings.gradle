@@ -2,4 +2,5 @@ rootProject.name = 'stage'
 
 include 'common'
 include 'app'
+include 'app2'
 include 'configsrv'

@@ -1,0 +1,14 @@
+server:
+    port: 8501
+
+spring:
+    application:
+        name: stage-app2
+
+    cloud:
+        consul:
+            host: localhost
+            port: 8500
+            discovery: 
+                # 注册到 Consul 的服务名称，后期客户端会根据这个名称来进行服务调用
+                serviceName: consul-app2

@@ -26,6 +26,8 @@ public class EthanService {
     @Autowired private VersionRepository versionRepository;
     @Autowired private RestTemplate restTemplate;
 
+    // 当调用远程配置时build的时候也必须启动config server
+    // 或者使用 gradle build -x test
     @Value("${my.val}")
     private String myconfig;
 
