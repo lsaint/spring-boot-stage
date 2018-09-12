@@ -1,6 +1,10 @@
-## 项目准则
+## Rule
 * NO XML
+* Java 10+ only
+* gradlew instead maven
 * yml instead properties
+* consul instead eureka
+
 
 ## 分层规范
 

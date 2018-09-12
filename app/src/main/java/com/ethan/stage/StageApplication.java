@@ -5,7 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
+@EnableDiscoveryClient
 @SpringBootApplication
 public class StageApplication implements CommandLineRunner {
 
@@ -22,6 +24,6 @@ public class StageApplication implements CommandLineRunner {
         ethanService.queryMySql();
         ethanService.getPageQueryVersion();
         ethanService.getUrl();
-        ethanService.postUrl();
+        // ethanService.postUrl();
     }
 }

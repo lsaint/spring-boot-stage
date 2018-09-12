@@ -9,8 +9,14 @@ spring:
     cloud:
         config:
             name: app               # coningsrv中config-repo的配置文件名
-            profile: test           # configsrv中config-repo的文件夹名
+            profile: dev           # configsrv中config-repo的文件夹名
             allow-override: true
             uri: http://localhost:8888
-            #fail-fast: true        # 连接不上直接启动失败
+            # fail-fast: true        # 连接不上直接启动失败
 
+        consul:
+            host: localhost
+            port: 8500
+            discovery: 
+                # 注册到 Consul 的服务名称，后期客户端会根据这个名称来进行服务调用
+                serviceName: consul-service
