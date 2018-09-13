@@ -2,6 +2,7 @@ buildscript {
 	ext {
 		springBootVersion = '2.0.4.RELEASE'
         springCloudVersion = 'Finchley.SR1'
+        lombokVersion = '1.18.2'
 	}
 	repositories {
 		mavenCentral()
@@ -11,6 +12,9 @@ buildscript {
 	}
 }
 
+plugins {
+	id 'net.ltgt.apt' version '0.18'
+}
 
 allprojects {
     apply plugin: 'java'
@@ -28,11 +32,14 @@ allprojects {
     }
 
     dependencies {
+        compileOnly("org.projectlombok:lombok:$lombokVersion")
+        annotationProcessor("org.projectlombok:lombok:$lombokVersion")
+
         compile('org.springframework.boot:spring-boot-starter-web')
         testCompile('org.springframework.boot:spring-boot-starter-test')
         // 使用性能更出色的log4j2
         compile('org.springframework.boot:spring-boot-starter-log4j2')
-        compile('org.projectlombok:lombok:1.18.2')
+        //compile("org.projectlombok:lombok:${lombokVersion}")
     }
 
     dependencyManagement {
