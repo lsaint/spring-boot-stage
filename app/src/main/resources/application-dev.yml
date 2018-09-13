@@ -29,3 +29,5 @@ app:
     strConfig: ikkyo
     timeout: 5000
 
+my:
+  val: dev_val_in_local

@@ -4,6 +4,7 @@
 * gradlew instead maven
 * yml instead properties
 * consul instead eureka
+* consul-config instead spring-cloud-config
 
 
 ## 分层规范
@@ -34,6 +35,6 @@
 * controller层: 不再抛异常，要将异常处理成错误码和错误信息方式返回.
 
 
-## service 要不要使用定义接口？
+### service 要不要使用定义接口？
 
 * 先不用，等到某个时候某个功能需要的时候再重构。

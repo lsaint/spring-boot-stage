@@ -1,22 +1,32 @@
 # bootstrap.yml 早于 application.yml 加载
-# 当allow-override为true时
-# application.yml中相同的配置项将被覆盖
 
 spring:
-    application:
-        name: stage-app
 
-    cloud:
-        config:
-            name: app               # coningsrv中config-repo的配置文件名
-            profile: dev           # configsrv中config-repo的文件夹名
-            allow-override: true
-            uri: http://localhost:8888
-            # fail-fast: true        # 连接不上直接启动失败
+  profiles:
+    active: dev
 
-        consul:
-            host: localhost
-            port: 8500
-            discovery: 
-                # 注册到 Consul 的服务名称，后期客户端会根据这个名称来进行服务调用
-                serviceName: consul-service
+  application:
+      name: stage-app
+
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery: 
+        # 注册到 Consul 的服务名称，客户端会根据这个名称来进行服务调用
+        serviceName: consul-service
+
+      config:
+        enabled: true   # 关闭后将读取本地yml配置
+        data-key: data
+        prefix: config
+        format: yaml
+
+
+    # spring cloud config
+    #config:
+    #  name: app               # coningsrv中config-repo的配置文件名
+    #    profile: dev           # configsrv中config-repo的文件夹名
+    #    allow-override: true   # application.yml中相同的配置项将被覆盖
+    #    uri: http://localhost:8888
+    #    # fail-fast: true        # 连接不上直接启动失败
