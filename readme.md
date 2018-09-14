@@ -6,6 +6,14 @@
 * consul instead eureka
 * consul-config instead spring-cloud-config
 
+## zuul
+
+``` curl http://localhost:8008/consul-service/hello ```
+> forward to
+* project app           /hello
+* project app2          /hello
+* project py flask      /hello
+
 
 ## 分层规范
 

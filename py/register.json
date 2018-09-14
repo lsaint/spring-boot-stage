@@ -1,0 +1,13 @@
+{
+  "ID": "flask-app-5000",
+  "Name": "consul-service",
+  "Address": "127.0.0.1",
+  "Port": 5000,
+  "EnableTagOverride": false,
+  "Check": {
+    "DeregisterCriticalServiceAfter": "10m",
+    "http": "http://localhost:5000/health",
+    "interval": "10s"
+  }
+}
+
