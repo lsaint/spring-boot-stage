@@ -1,0 +1,13 @@
+spring:
+  profiles: 
+    active: dev
+
+  application:
+    name: stage-zuul
+
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery: 
+        serviceName: zuul

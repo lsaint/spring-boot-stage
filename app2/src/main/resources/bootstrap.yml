@@ -10,7 +10,8 @@ spring:
       host: localhost
       port: 8500
       discovery: 
-        # 注册到 Consul 的服务名称，后期客户端会根据这个名称来进行服务调用
+        # 服务注册，调用端访问时consul自动发现所有该名称的可用节点
+        # 此处方便测试把app2模拟成跟app一样的服务
         serviceName: consul-service
 
       config:
