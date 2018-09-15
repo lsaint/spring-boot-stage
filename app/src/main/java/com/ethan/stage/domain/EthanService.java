@@ -7,6 +7,7 @@ import com.ethan.stage.dal.VersionDO;
 import com.ethan.stage.dal.VersionRepository;
 import com.ethan.stage.domain.BO.Post;
 import com.ethan.stage.domain.BO.Quote;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import java.text.MessageFormat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -69,5 +70,14 @@ public class EthanService {
                         "https://jsonplaceholder.typicode.com/posts", request, Post.class);
         System.out.println("post第三方url: " + postReply.toString());
         return postReply.toString();
+    }
+
+    @HystrixCommand(fallbackMethod = "hystrixFallback")
+    public String testHystrix() {
+        return restTemplate.getForObject("http://localhost:5000/hello", String.class);
+    }
+
+    public String hystrixFallback() {
+        return "hystrixFallback";
     }
 }
