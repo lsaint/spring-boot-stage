@@ -18,7 +18,7 @@
 ## 分层规范
 
 * 请求处理层-web: (Controller, VO) 主要是对访问控制进行转发，各类基本参数校验，或者不复用的业务简单处理等。
-* 业务层-service: (Service, BO)相对具体的业务逻辑服务层。
+* 业务层-domain: (Service, BO)相对具体的业务逻辑服务层。
 * 通用逻辑层-manager: (Manager, BO)通用业务处理层，它有如下特征:
     * 对第三方平台封装的层，预处理返回结果及转化异常信息;
     * 对Service层通用能力的下沉，如缓存方案、中间件通用处理; 
@@ -28,11 +28,11 @@
 
 ## 领域对象规范
 
-* DO(Data Object): 与数据库表结构一一对应，通过 DAO 层向上传输数据源对象。
-* DTO(Data Transfer Object): 数据传输对象，DO的一个子集，Service 或 Manager 向外传输的对象。
+* DO(Data Object): 与数据库表结构一一对应，通过dal层向上传输数据源对象。
+* DTO(Data Transfer Object): 数据传输对象，Service 或 Manager 向外传输的对象。
 * BO(Business Object): 业务对象。由 Service 层输出的封装业务逻辑的对象。
 * AO(ApplicationObject): 应用对象。在Web层与Service层之间抽象的复用对象模型， 极为贴近展示层，复用度不高。
-* VO(View oBJect): 显示层对象，通常是 Web 向模板渲染引擎层传输的对象。
+* VO(View oBJect): 显示层对象，通常是web层输出的对象。
 * Query: 数据查询对象，各层接收上层的查询请求。注意超过 2 个参数的查询封装，禁止使用 Map 类来传输。
 
 

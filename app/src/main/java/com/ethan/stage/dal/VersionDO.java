@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "members_changelog")
-public class Version {
+public class VersionDO {
 
     @Id private Long id;
 

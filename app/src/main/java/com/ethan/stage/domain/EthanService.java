@@ -3,7 +3,7 @@ package com.ethan.stage.domain;
 import com.ethan.stage.common.algorithm.SnowFlake;
 import com.ethan.stage.config.AppConfig;
 import com.ethan.stage.dal.UserRepository;
-import com.ethan.stage.dal.Version;
+import com.ethan.stage.dal.VersionDO;
 import com.ethan.stage.dal.VersionRepository;
 import com.ethan.stage.domain.BO.Post;
 import com.ethan.stage.domain.BO.Quote;
@@ -49,7 +49,7 @@ public class EthanService {
     public void getPageQueryVersion() {
         // PageRequest.of(int page, int size, Sort.Direction direction, String... properties)
         Pageable pageable = PageRequest.of(0, 1, Sort.by(Direction.DESC, "id"));
-        for (Version version : versionRepository.findAll(pageable)) {
+        for (VersionDO version : versionRepository.findAll(pageable)) {
             System.out.println("分页查询 " + version);
         }
     }
