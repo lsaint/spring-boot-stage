@@ -1,2 +1,26 @@
 server:
-    port: 8008
+  port: 8008
+
+spring:
+  output:
+    ansi:
+      enabled: always
+
+
+# zuul中配置了熔断fallback时生效
+hystrix:
+  command.default.execution.isolation.thread.timeoutInMilliseconds: 7000
+
+
+# 调用serviceId的方式，ribbon配置生效
+ribbon:
+  ConnectTimeout: 7000
+  ReadTimeout: 7000
+
+
+# 调用url的方式，zuul.host配置生效
+zuul:
+  host:
+    connect-timeout-millis: 7000
+    socket-timeout-millis: 7000
+
