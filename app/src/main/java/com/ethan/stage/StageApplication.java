@@ -1,6 +1,6 @@
 package com.ethan.stage;
 
-import com.ethan.stage.service.EthanService;
+import com.ethan.stage.domain.EthanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

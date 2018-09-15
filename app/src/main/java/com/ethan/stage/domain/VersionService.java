@@ -1,4 +1,4 @@
-package com.ethan.stage.service;
+package com.ethan.stage.domain;
 
 import com.ethan.stage.dal.Version;
 import com.ethan.stage.dal.VersionRepository;

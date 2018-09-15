@@ -1,4 +1,4 @@
-package com.ethan.stage.service.BO;
+package com.ethan.stage.domain.BO;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

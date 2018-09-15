@@ -1,7 +1,7 @@
 package com.ethan.stage.web;
 
 import com.ethan.stage.common.APIException;
-import com.ethan.stage.service.VersionService;
+import com.ethan.stage.domain.VersionService;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 import javax.validation.Valid;

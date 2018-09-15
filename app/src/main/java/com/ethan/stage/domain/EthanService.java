@@ -1,12 +1,12 @@
-package com.ethan.stage.service;
+package com.ethan.stage.domain;
 
 import com.ethan.stage.common.algorithm.SnowFlake;
 import com.ethan.stage.config.AppConfig;
 import com.ethan.stage.dal.UserRepository;
 import com.ethan.stage.dal.Version;
 import com.ethan.stage.dal.VersionRepository;
-import com.ethan.stage.service.BO.Post;
-import com.ethan.stage.service.BO.Quote;
+import com.ethan.stage.domain.BO.Post;
+import com.ethan.stage.domain.BO.Quote;
 import java.text.MessageFormat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
