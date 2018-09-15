@@ -19,6 +19,10 @@ spring:
         ansi:
             enabled: always
 
+feign:
+  hystrix:
+    enabled: false
+
 logging:
     level:
         com.ethan.stage: debug

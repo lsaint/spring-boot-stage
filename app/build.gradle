@@ -11,10 +11,11 @@ dependencies {
 
     // compile("org.springframework.cloud:spring-cloud-starter-config")
     // spring-cloud-starter-consul-all 与 spring-cloud-starter-config 有冲突
-	compile('org.springframework.cloud:spring-cloud-starter-consul-all')
-    compile('org.springframework.boot:spring-boot-starter-actuator')
+	compile("org.springframework.cloud:spring-cloud-starter-consul-all")
+    compile("org.springframework.boot:spring-boot-starter-actuator")
+    compile("org.springframework.cloud:spring-cloud-starter-openfeign")
 
-    compile('joda-time:joda-time:2.2')
+    compile("joda-time:joda-time:2.2")
 
-    compile project(':common')
+    compile project(":common")
 }
