@@ -1,4 +1,4 @@
-package com.ethan.stage.controller;
+package com.ethan.stage.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;

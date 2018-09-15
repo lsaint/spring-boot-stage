@@ -1,4 +1,4 @@
-package com.ethan.stage.controller;
+package com.ethan.stage.web;
 
 import com.ethan.stage.common.APIException;
 import com.ethan.stage.service.VersionService;
