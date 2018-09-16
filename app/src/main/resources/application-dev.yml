@@ -1,6 +1,7 @@
 server:
   port: 8123
 
+
 spring:
   datasource:
     url : jdbc:mysql://localhost:3306/bjdj?useSSL=false
@@ -19,22 +20,38 @@ spring:
     ansi:
       enabled: always
 
-feign:
-  hystrix:
-    enabled: false
+
+# feign:
+#   hystrix.enabled: false
+# hystrix:
+#   command.default.execution.timeout.enabled: false
+#
+
 
 hystrix:
   command.default.execution.isolation.thread.timeoutInMilliseconds: 2000
+# 如要针对某个service,则如下
+# command.consul-service.execution.isolation.thread.timeoutInMilliseconds: xx
+
+
+ribbon:
+  ConnectTimeout: 7000
+  ReadTimeout: 7000
+# 如要针对某个service,则如下
+# consul-service.ribbon.ConnectTimeout: xxx
+
 
 logging:
   level:
     com.ethan.stage: debug
     org.springframework.web.filter.CommonsRequestLoggingFilter: debug
 
+
 app:
   a: 5
   strConfig: ikkyo
   timeout: 5000
+
 
 my:
   val: dev_val_in_local

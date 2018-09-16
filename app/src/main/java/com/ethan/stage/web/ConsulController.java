@@ -1,6 +1,5 @@
 package com.ethan.stage.web;
 
-import com.ethan.stage.domain.HelloFeignClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -14,7 +13,6 @@ public class ConsulController {
 
     @Autowired private DiscoveryClient discoveryClient;
     @Autowired private LoadBalancerClient loadBalancer;
-    @Autowired private HelloFeignClient helloFeignClient;
 
     @RequestMapping("/hello")
     public String hello() {
@@ -37,10 +35,5 @@ public class ConsulController {
                         .getForObject(serviceInstance.getUri().toString() + "/hello", String.class);
         System.out.println("consul-service调用结果: " + callServiceResult);
         return callServiceResult;
-    }
-
-    @RequestMapping("/feign/call/")
-    public String feignCall() {
-        return helloFeignClient.hello();
     }
 }

@@ -9,7 +9,7 @@ spring:
 
 # zuul中配置了熔断fallback时生效
 hystrix:
-  command.default.execution.isolation.thread.timeoutInMilliseconds: 7000
+  command.default.execution.isolation.thread.timeoutInMilliseconds: 28100
 
 
 # 调用serviceId的方式，ribbon配置生效
