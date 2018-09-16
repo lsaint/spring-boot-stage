@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 // name为注册到consul中的服务名
 // 此时相当于http://consul-service/hello
-@FeignClient(name = "consul-service")
+@FeignClient(name = "consul-service", fallback = HelloFeignFallback.class)
 public interface HelloFeignClient {
 
     // 这里是使用feign请求的地址

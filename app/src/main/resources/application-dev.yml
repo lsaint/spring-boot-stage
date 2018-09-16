@@ -21,8 +21,8 @@ spring:
       enabled: always
 
 
-# feign:
-#   hystrix.enabled: false
+feign:
+  hystrix.enabled: true
 # hystrix:
 #   command.default.execution.timeout.enabled: false
 #
