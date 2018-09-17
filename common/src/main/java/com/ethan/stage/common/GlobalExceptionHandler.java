@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
 // 应用中不可直接使用日志系统(Log4j、Logback)中的 API，而应依赖使用日志框架
-// SLF4J 中的 API，使用门面模式的日志框架，有利于维护和各个类的日志处理方式统一
+// SLF4J 中的 API，使用facade模式的日志框架，有利于维护和各个类的日志处理方式统一
 @Slf4j
 @SuppressWarnings("rawtypes")
 @RestControllerAdvice // 该注解实现全局异常处理

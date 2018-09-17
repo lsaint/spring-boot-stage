@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 @app.route("/hello")
 def hello():
-    time.sleep(5)
+    time.sleep(2)
     return "reply from python flask"
 
 @app.route("/health")
