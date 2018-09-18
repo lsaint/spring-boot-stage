@@ -1,10 +1,13 @@
 package com.ethan.stage.zuul;
 
+import com.ethan.stage.common.GenericResponse;
+import com.ethan.stage.common.enums.ErrEnum;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import javax.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.http.HttpStatus;
 
 @Slf4j
 public class TokenFilter extends ZuulFilter {
@@ -34,14 +37,14 @@ public class TokenFilter extends ZuulFilter {
         String token = request.getParameter("token"); // 获取请求的参数
 
         if (StringUtils.isNotBlank(token)) {
-            ctx.setSendZuulResponse(true); // 对请求进行路由
-            ctx.setResponseStatusCode(200);
+            ctx.setSendZuulResponse(true); // 继续路由
+            ctx.setResponseStatusCode(HttpStatus.OK.value());
             ctx.set("isSuccess", true);
             return null;
         } else {
-            ctx.setSendZuulResponse(false); // 不对其进行路由
-            ctx.setResponseStatusCode(400);
-            ctx.setResponseBody("token is empty");
+            ctx.setSendZuulResponse(false); // 中断路由
+            ctx.setResponseStatusCode(HttpStatus.UNAUTHORIZED.value());
+            ctx.setResponseBody(GenericResponse.onError(ErrEnum.INVALID_TOKEN).toJson());
             ctx.set("isSuccess", false);
             return null;
         }

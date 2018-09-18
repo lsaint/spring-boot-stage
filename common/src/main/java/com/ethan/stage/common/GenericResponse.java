@@ -1,10 +1,13 @@
 package com.ethan.stage.common;
 
 import com.ethan.stage.common.enums.ErrEnum;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.Serializable;
 import java.util.HashMap;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 /*
  * Json 统一返回格式
@@ -24,6 +27,7 @@ import lombok.NoArgsConstructor;
  * }
  */
 
+@Slf4j
 @Data
 @NoArgsConstructor
 @SuppressWarnings("rawtypes")
@@ -52,6 +56,16 @@ public class GenericResponse<T> implements Serializable {
         this.code = code;
         this.msg = msg;
         this.data = data;
+    }
+
+    public String toJson() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            return objectMapper.writeValueAsString(this);
+        } catch (JsonProcessingException e) {
+            log.warn("toJson error", e);
+            return "";
+        }
     }
 
     // 成功，空数据
