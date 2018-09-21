@@ -9,6 +9,11 @@ spring:
     password : 111333
     driverClassName : com.mysql.jdbc.Driver
 
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password: null
+
   # 以下两项为404抛出NoHandlerFoundException异常方便统一处理
   resources:
     add-mappings: false

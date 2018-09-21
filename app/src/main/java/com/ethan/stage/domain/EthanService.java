@@ -15,6 +15,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.http.HttpEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -26,6 +27,7 @@ public class EthanService {
     @Autowired private UserRepository userRepository;
     @Autowired private VersionRepository versionRepository;
     @Autowired private RestTemplate restTemplate;
+    @Autowired private StringRedisTemplate stringRedisTemplate;
 
     // 当调用远程配置时build的时候也必须启动config server
     // 或者使用 gradle build -x test
@@ -41,6 +43,12 @@ public class EthanService {
         System.out.println(
                 MessageFormat.format("从本地配置文件读取信息 {0} {1}", config.getStrConfig(), config.getA()));
         System.out.println("从配置文件服务器读取信息 " + myconfig);
+    }
+
+    public void redisOps() {
+        stringRedisTemplate.opsForValue().set("a", "ABcd");
+        String va = stringRedisTemplate.opsForValue().get("a");
+        System.out.println("从redis读取key a  " + va);
     }
 
     public void queryMySql() {

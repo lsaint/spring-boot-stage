@@ -26,6 +26,7 @@ public class StageApplication implements CommandLineRunner {
         ethanService.queryMySql();
         ethanService.getPageQueryVersion();
         ethanService.getUrl();
+        ethanService.redisOps();
         // ethanService.postUrl();
     }
 }
