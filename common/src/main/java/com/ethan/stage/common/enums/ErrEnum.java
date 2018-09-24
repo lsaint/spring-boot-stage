@@ -10,7 +10,7 @@ public enum ErrEnum {
     INTERNAL_SERVER_ERROR(500, "内部错误"),
     BAD_REQUEST(400, "无效请求"),
     NOT_FOUND(404, "访问地址不存在"),
-    INVALID_TOKEN(401, "token非法"),
+    INVALID_TOKEN(401, "无权限"),
     ERROR_HINT(499, "显示给终端用户的信息"),
 
     // 业务1

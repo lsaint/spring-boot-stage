@@ -6,5 +6,8 @@ dependencies {
 	compile('org.springframework.cloud:spring-cloud-starter-consul-all')
     // 不加actuator的话consul的健康检查会失败
     compile('org.springframework.boot:spring-boot-starter-actuator')
+
+    compile('org.springframework.boot:spring-boot-starter-security')
+    
     compile project(':common')
 }
