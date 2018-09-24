@@ -15,7 +15,7 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 // SLF4J 中的 API，使用facade模式的日志框架，有利于维护和各个类的日志处理方式统一
 @Slf4j
 @SuppressWarnings("rawtypes")
-@RestControllerAdvice // 该注解实现全局异常处理
+@RestControllerAdvice // 该注解实现全局异常处理 401/403除外
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(value = {Exception.class})

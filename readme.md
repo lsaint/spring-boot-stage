@@ -6,7 +6,8 @@
 * consul instead eureka
 * consul-config instead spring-cloud-config
 
-## zuul
+
+## zuul, consul
 
 ``` curl http://localhost:8008/consul-service/hello ```
 > forward to
