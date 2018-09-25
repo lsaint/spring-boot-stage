@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: stage-authsrv
+
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery: 
+        serviceName: auth-service
