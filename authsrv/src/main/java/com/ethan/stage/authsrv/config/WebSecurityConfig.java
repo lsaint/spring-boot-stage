@@ -31,8 +31,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticated();
     }
 
-    @Override
     @Bean
+    @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
@@ -41,12 +41,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
-                .withUser("admin")
-                .password("aaaaaa")
+                .withUser("Ethan")
+                .password("{noop}aaaaaa")
                 .roles("ADMIN", "USER")
                 .and()
-                .withUser("user")
-                .password("uuuuuu")
+                .withUser("kane")
+                .password("{noop}uuuuuu")
                 .roles("USER");
     }
 }

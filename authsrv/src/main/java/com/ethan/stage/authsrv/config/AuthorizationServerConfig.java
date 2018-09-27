@@ -1,11 +1,15 @@
 package com.ethan.stage.authsrv.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
 
 @Configuration
 @EnableAuthorizationServer
@@ -14,12 +18,32 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     // AuthorizationServerConfigurerAdapter is used to configure
     // how the OAuth authorization server works
 
-    @Override
-    public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {}
+    @Autowired AuthenticationManager authenticationManager;
+    @Autowired RedisConnectionFactory redisConnectionFactory;
 
     @Override
-    public void configure(ClientDetailsServiceConfigurer clients) throws Exception {}
+    public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
+        security.allowFormAuthenticationForClients();
+    }
 
     @Override
-    public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {}
+    public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+        clients.inMemory()
+                .withClient("client1")
+                .secret("{noop}client1secret")
+                .authorizedGrantTypes("password", "refresh_token")
+                .authorities("admin", "user")
+                .and()
+                .withClient("client2")
+                .secret("{noop}123456")
+                .authorizedGrantTypes("client_credentials", "refresh_token")
+                .authorities("admin", "user");
+    }
+
+    @Override
+    public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+        endpoints
+                .tokenStore(new RedisTokenStore(redisConnectionFactory))
+                .authenticationManager(authenticationManager);
+    }
 }
