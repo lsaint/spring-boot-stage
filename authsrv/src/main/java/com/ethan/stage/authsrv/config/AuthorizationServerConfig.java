@@ -10,6 +10,10 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 @Configuration
 @EnableAuthorizationServer
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
+
+    // AuthorizationServerConfigurerAdapter is used to configure
+    // how the OAuth authorization server works
+
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {}
 

@@ -10,6 +10,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
+    // WebSecurityConfigurerAdapter is used to configure
+    // how the this(app2) server is secured.
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         /*
