@@ -5,6 +5,7 @@ import java.util.*;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -51,5 +52,12 @@ public class GlobalExceptionHandler {
     public GenericResponse apiExceptionHandler(APIException ex) {
         log.debug(ex.toString());
         return new GenericResponse<>(ex.getCode(), ex.getMsg(), Const.EMPTY_MAP);
+    }
+
+    @ExceptionHandler(value = HttpRequestMethodNotSupportedException.class)
+    @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
+    public GenericResponse methodExceptionHandler(HttpRequestMethodNotSupportedException ex) {
+        log.debug(ex.toString());
+        return new GenericResponse<>(ErrEnum.METHOD_NOT_ALLOWED, Const.EMPTY_MAP);
     }
 }
