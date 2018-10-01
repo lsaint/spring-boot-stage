@@ -23,7 +23,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
-        security.allowFormAuthenticationForClients();
+        security.checkTokenAccess("isAuthenticated()") // allow check token
+                .allowFormAuthenticationForClients();
         // curl -X POST http://localhost:8888/oauth/token
         // -d 'grant_type=client_credentials&client_id=client2&client_secret=123456&scope=11'
         // OAuth标准不支持json格式的提交
