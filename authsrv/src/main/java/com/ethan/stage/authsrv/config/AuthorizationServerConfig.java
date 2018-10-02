@@ -21,9 +21,18 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Autowired AuthenticationManager authenticationManager;
     @Autowired RedisConnectionFactory redisConnectionFactory;
 
+    /*
+     * > tokenKeyAccess("permitAll()")
+     * > /oauth/token_key, exposes public key for token verification  if using JWT tokens
+     *
+     * > checkTokenAccess("isAuthenticated()")
+     * > /oauth/check_token, allow check token
+     */
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
-        security.checkTokenAccess("isAuthenticated()") // allow check token
+        security.tokenKeyAccess("permitAll()")
+                // .checkTokenAccess("isAuthenticated()")
+                .checkTokenAccess("permitAll()")
                 .allowFormAuthenticationForClients();
         // curl -X POST http://localhost:8888/oauth/token
         // -d 'grant_type=client_credentials&client_id=client2&client_secret=123456&scope=11'

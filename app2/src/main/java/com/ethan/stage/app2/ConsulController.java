@@ -23,4 +23,9 @@ public class ConsulController {
                 loadBalanceRestTemplate.getForObject("http://consul-service/hello", String.class);
         return result;
     }
+
+    @RequestMapping("/api/1")
+    public String securityMsg() {
+        return "OAuth2 Resource api1";
+    }
 }
