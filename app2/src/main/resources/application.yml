@@ -8,5 +8,4 @@ security:
       clientId: client2
       clientSecret: 123456
     resource:
-      filter-order: 3
       tokenInfoUri: http://localhost:8888/oauth/check_token

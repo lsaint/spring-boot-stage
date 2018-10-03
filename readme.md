@@ -20,8 +20,8 @@
 * 对用户采用的是password credentials授权模式
 * 对微服务采用的是client credentials授权模式
 * zuul的角色相当于client (EnableOAuth2Sso)
-* authsrv是认证服务器
-* app,app2为资源服务器
+* authsrv是认证服务器 (EnableAuthorizationServer)
+* app,app2为资源服务器 (EnableResourceServer)
 
 
 ## 分层规范
