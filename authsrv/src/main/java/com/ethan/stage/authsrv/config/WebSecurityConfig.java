@@ -27,6 +27,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/oauth/token")
                 .permitAll()
+                .antMatchers("/actuator/health")
+                .permitAll()
                 .anyRequest()
                 .authenticated();
     }

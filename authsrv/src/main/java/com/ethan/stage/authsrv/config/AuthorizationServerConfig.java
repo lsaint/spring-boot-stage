@@ -51,6 +51,11 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .secret("{noop}123456")
                 .authorizedGrantTypes("client_credentials", "refresh_token")
                 .authorities("admin", "user");
+        /*
+         * 'grant_type=client_credentials&client_id=client2&client_secret=123456&scope=11'
+         *  and
+         * 'grant_type=password&username=Ethan&password=aaaaaa&client_id=client1&client_secret=client1secret&scope=22'
+         */
     }
 
     @Override

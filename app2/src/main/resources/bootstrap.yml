@@ -12,7 +12,8 @@ spring:
       discovery: 
         # 服务注册，调用端访问时consul自动发现所有该名称的可用节点
         # 此处方便测试把app2模拟成跟app一样的服务
-        serviceName: consul-service
+        # serviceName: consul-service
+        serviceName: oauth-resource
 
       config:
         data-key: data
