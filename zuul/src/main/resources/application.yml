@@ -24,3 +24,11 @@ zuul:
     connect-timeout-millis: 7000
     socket-timeout-millis: 7000
 
+security:
+  oauth2:
+    client:
+      grantType: client_credentials
+      clientId: client2
+      clientSecret: 123456
+    resource:
+      tokenInfoUri: http://localhost:8888/oauth/check_token

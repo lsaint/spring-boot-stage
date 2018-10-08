@@ -1,13 +1,9 @@
 package com.ethan.stage.zuul;
 
-import com.ethan.stage.common.GenericResponse;
-import com.ethan.stage.common.enums.ErrEnum;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import javax.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.http.HttpStatus;
 
 @Slf4j
 public class TokenFilter extends ZuulFilter {
@@ -32,22 +28,23 @@ public class TokenFilter extends ZuulFilter {
         RequestContext ctx = RequestContext.getCurrentContext();
         HttpServletRequest request = ctx.getRequest();
 
-        log.info("TokenFilter {},{}", request.getMethod(), request.getRequestURL().toString());
+        log.info("filtering", request.getMethod(), request.getRequestURL().toString());
 
-        String token = request.getParameter("token"); // 获取请求的参数
-
-        if (StringUtils.isNotBlank(token)) {
-            ctx.setSendZuulResponse(true); // 继续路由
-            ctx.setResponseStatusCode(HttpStatus.OK.value());
-            ctx.set("isSuccess", true);
-            return null;
-        } else {
-            ctx.setSendZuulResponse(false); // 中断路由
-            ctx.setResponseStatusCode(HttpStatus.UNAUTHORIZED.value());
-            ctx.setResponseBody(GenericResponse.onError(ErrEnum.INVALID_TOKEN).toJson());
-            ctx.set("isSuccess", false);
-            return null;
-        }
+        // check token
+        // String token = request.getParameter("token"); // 获取请求的参数
+        // if (StringUtils.isNotBlank(token)) {
+        //    ctx.setSendZuulResponse(true); // 继续路由
+        //    ctx.setResponseStatusCode(HttpStatus.OK.value());
+        //    ctx.set("isSuccess", true);
+        //    return null;
+        // } else {
+        //    ctx.setSendZuulResponse(false); // 中断路由
+        //    ctx.setResponseStatusCode(HttpStatus.UNAUTHORIZED.value());
+        //    ctx.setResponseBody(GenericResponse.onError(ErrEnum.INVALID_TOKEN).toJson());
+        //    ctx.set("isSuccess", false);
+        //    return null;
+        // }
+        return null;
     }
 }
 
