@@ -33,8 +33,10 @@ class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
                 .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/api/**")
-                .authenticated();
+                .anyRequest()
+                .permitAll();
+        // .antMatchers("/api/**")
+        // .authenticated();
     }
 
     @Bean

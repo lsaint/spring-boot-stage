@@ -11,7 +11,7 @@ import org.springframework.web.client.RestTemplate;
 @EnableDiscoveryClient
 @EnableAutoConfiguration // 从consul中读配置
 @SpringBootApplication
-public class ConsulsrvApplication {
+public class App2Application {
 
     @Bean
     @LoadBalanced
@@ -20,6 +20,6 @@ public class ConsulsrvApplication {
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(ConsulsrvApplication.class, args);
+        SpringApplication.run(App2Application.class, args);
     }
 }
